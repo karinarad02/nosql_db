@@ -22,28 +22,30 @@ const MovieYear = () => {
   return (
     <div>
       <h2>Movies Grouped by Year</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Movie Count</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stats.length > 0 ? (
-            stats.map(({ year, count }) => (
-              <tr key={year}>
-                <td>{year}</td>
-                <td>{count}</td>
-              </tr>
-            ))
-          ) : (
+      <div className="scrollable">
+        <table>
+          <thead>
             <tr>
-              <td colSpan="2">Loading...</td>
+              <th>Year</th>
+              <th>Movie Count</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {stats.length > 0 ? (
+              stats.map(({ year, count }) => (
+                <tr key={year}>
+                  <td>{year}</td>
+                  <td>{count}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2">Loading...</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -18,22 +18,24 @@ const MovieGenres = () => {
   return (
     <div>
       <h2>Movie Genre Stats</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Genre</th>
-            <th>Average IMDb Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stats.map(({ genre, avg }) => (
+      <div className="scrollable">
+        <table>
+          <thead>
             <tr>
-              <td>{genre}</td>
-              <td>{avg.toFixed(2)}</td>
+              <th>Genre</th>
+              <th>Average IMDb Rating</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {stats.map(({ genre, avg }) => (
+              <tr>
+                <td>{genre}</td>
+                <td>{avg.toFixed(2)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

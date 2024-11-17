@@ -22,28 +22,30 @@ const MovieAwards = () => {
   return (
     <div>
       <h2>Movies with Awards</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Awards</th>
-          </tr>
-        </thead>
-        <tbody>
-          {movies.length > 0 ? (
-            movies.map(({ title, awards }) => (
-              <tr >
-                <td>{title}</td>
-                <td>{awards}</td>
-              </tr>
-            ))
-          ) : (
+      <div className="scrollable">
+        <table>
+          <thead>
             <tr>
-              <td colSpan="2">Loading...</td>
+              <th>Title</th>
+              <th>Awards</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {movies.length > 0 ? (
+              movies.map(({ title, awards }) => (
+                <tr>
+                  <td>{title}</td>
+                  <td>{awards}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2">Loading...</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

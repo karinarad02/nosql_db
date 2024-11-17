@@ -10,6 +10,7 @@ function MovieEdit({ fetchMovies }) {
     year: "",
     plot: "",
     genres: [],
+    poster: "",
   });
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function MovieEdit({ fetchMovies }) {
           year: movieData.year.$numberInt || movieData.year, // Handle nested or direct year
           plot: movieData.plot || "",
           genres: movieData.genres || [],
+          poster: movieData.poster || "",
         });
       } catch (err) {
         console.error("Failed to fetch movie details:", err);
@@ -49,11 +51,12 @@ function MovieEdit({ fetchMovies }) {
     try {
       const updatedMovie = {
         title: movie.title,
-        year: parseInt(movie.year, 10), // Ensure year is a number
+        year: parseInt(movie.year, 10),
         plot: movie.plot,
-        genres: movie.genres, // Handle genres as an array
+        genres: movie.genres,
+        poster: movie.poster,
       };
-
+      console.log(updatedMovie);
       await axios.put(
         `${process.env.REACT_APP_API_URL}/movies/${id}`,
         updatedMovie
@@ -116,6 +119,17 @@ function MovieEdit({ fetchMovies }) {
               genres: e.target.value.split(",").map((genre) => genre.trim()),
             }))
           }
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="poster">Poster</label>
+        <input
+          id="poster"
+          name="poster"
+          type="text"
+          placeholder="Enter movie poster"
+          value={movie.poster}
+          onChange={handleChange}
         />
       </div>
       <button type="submit" className="submit-btn">

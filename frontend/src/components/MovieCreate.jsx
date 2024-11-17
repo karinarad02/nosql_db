@@ -7,7 +7,6 @@ function MovieCreate({ fetchMovies }) {
   const [year, setYear] = useState("");
   const [plot, setPlot] = useState("");
   const [genres, setGenres] = useState([]);
-  const [directors, setDirectors] = useState([]);
   const [poster, setPoster] = useState("");
   const navigate = useNavigate();
 
@@ -15,15 +14,11 @@ function MovieCreate({ fetchMovies }) {
     setGenres(e.target.value.split(",").map((genre) => genre.trim()));
   };
 
-  const handleDirectorsChange = (e) => {
-    setDirectors(e.target.value.split(",").map((director) => director.trim()));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!genres.length || !directors.length) {
-      return alert("Please provide at least one genre and one director.");
+    if (!genres.length) {
+      return alert("Please provide at least one genre!");
     }
 
     const newMovie = {
@@ -31,7 +26,6 @@ function MovieCreate({ fetchMovies }) {
       year: parseInt(year, 10),
       plot,
       genres,
-      directors,
       poster,
     };
 
@@ -95,18 +89,6 @@ function MovieCreate({ fetchMovies }) {
           placeholder="Enter genres (comma-separated, e.g., Action, Drama)"
           value={genres.join(", ")}
           onChange={handleGenresChange}
-        />
-      </div>
-
-      {/* Directors Field */}
-      <div className="form-group">
-        <label htmlFor="directors">Directors</label>
-        <input
-          id="directors"
-          type="text"
-          placeholder="Enter directors (comma-separated, e.g., Director1, Director2)"
-          value={directors.join(", ")}
-          onChange={handleDirectorsChange}
         />
       </div>
 

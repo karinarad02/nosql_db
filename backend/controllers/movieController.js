@@ -94,6 +94,7 @@ const updateMovie = async (req, res) => {
           year: parseInt(updatedMovie.year, 10),
           plot: updatedMovie.plot,
           genres: updatedMovie.genres,
+          poster: updatedMovie.poster,
         },
       },
       { returnDocument: "after" }
@@ -170,7 +171,8 @@ const getMoviesGroupedByYear = async (req, res) => {
 
     const stats = await moviesCollection
       .aggregate([
-        { $group: { _id: { $year: "$released" }, movieCount: { $sum: 1 } } },
+        { $match: { year: { $exists: true } } },
+        { $group: { _id: "$year", movieCount: { $sum: 1 } } },
         { $sort: { _id: 1 } },
         {
           $project: {
