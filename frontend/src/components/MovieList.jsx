@@ -27,20 +27,7 @@ function MovieList({ movies, onDelete }) {
           onChange={(e) => setSearch(e.target.value)}
           className="search-input"
         />
-        <select
-          value={genreFilter}
-          onChange={(e) => setGenreFilter(e.target.value)}
-          className="genre-filter"
-        >
-          <option value="">All Genres</option>
-          {Array.from(new Set(movies.flatMap((movie) => movie.genres))).map(
-            (genre) => (
-              <option key={genre} value={genre}>
-                {genre}
-              </option>
-            )
-          )}
-        </select>
+        
         <button onClick={() => navigate("/create")} className="create-btn">
           Create Movie
         </button>
