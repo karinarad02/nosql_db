@@ -27,11 +27,11 @@ function MovieList({ movies, onDelete }) {
           onChange={(e) => setSearch(e.target.value)}
           className="search-input"
         />
-        
+
         <button onClick={() => navigate("/create")} className="create-btn">
           Create Movie
         </button>
-        <button onClick={() => navigate("/stats")} className="create-btn">
+        <button onClick={() => navigate("/stats")} className="stats-btn">
           Movie Stats
         </button>
       </div>
@@ -60,6 +60,12 @@ function MovieList({ movies, onDelete }) {
                   Genres: {movie.genres?.join(", ") || "No genres available"}
                 </p>
                 <div className="movie-actions">
+                  <button
+                    onClick={() => navigate(`/view/${movie._id}`)}
+                    className="view-btn"
+                  >
+                    View
+                  </button>
                   <button
                     onClick={() => navigate(`/edit/${movie._id}`)}
                     className="edit-btn"

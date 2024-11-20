@@ -2,6 +2,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 // Global variable to hold the collection reference
 let moviesCollection;
+let commentsCollection;
 
 // Function to connect to MongoDB
 async function connectToDatabase() {
@@ -14,6 +15,7 @@ async function connectToDatabase() {
     await client.connect();
     const db = client.db("sample_mflix");
     moviesCollection = db.collection("movies");
+    commentsCollection = db.collection("comments");
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Failed to connect to MongoDB:", err);
@@ -54,6 +56,30 @@ const getMovieById = async (req, res) => {
 
     res.json(movie);
   } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
+const getCommentsByMovieId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!commentsCollection) {
+      return res.status(500).send("Database connection not established");
+    }
+
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send("Invalid Movie ID format");
+    }
+
+    const comments = await commentsCollection
+      .find({ movie_id: new ObjectId(id) })
+      .sort({ date: -1 })
+      .toArray();
+
+    res.json(comments);
+  } catch (err) {
+    console.error("Error fetching comments for movie:", err);
     res.status(500).send(err.message);
   }
 };
@@ -241,6 +267,7 @@ module.exports = {
   connectToDatabase,
   getMovies,
   getMovieById,
+  getCommentsByMovieId,
   addMovie,
   updateMovie,
   deleteMovie,

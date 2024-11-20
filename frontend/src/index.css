@@ -40,7 +40,7 @@ h1 {
 
 .create-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #9000ff;
   color: white;
   border: none;
   cursor: pointer;
@@ -48,7 +48,20 @@ h1 {
 }
 
 .create-btn:hover {
-  background-color: #0056b3;
+  background-color: #8300b3;
+}
+
+.stats-btn {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.stats-btn:hover {
+  background-color: #d4a900;
 }
 
 /* List css */
@@ -129,6 +142,15 @@ button {
   margin: 5px;
 }
 
+.view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
 .edit-btn {
   background-color: #4caf50;
   color: white;
@@ -154,11 +176,68 @@ button {
   }
 }
 
+/* View css */
+.movie-view {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.movie-view h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.movie-view img {
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.movie-view p {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.movie-view p strong {
+  color: #333;
+}
+
+.movie-view ul {
+  list-style: none;
+  padding: 0;
+}
+
+.movie-view ul li {
+  margin: 5px 0;
+}
+
+.movie-view .error,
+.movie-view .loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.movie-view .loading {
+  color: #0275d8;
+}
+
 /* Edit Form css */
 .movie-form {
   width: 100%;
   max-width: 400px;
-  margin: 10rem auto;
+  margin: 4rem auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
@@ -197,7 +276,7 @@ button {
   outline: none;
 }
 
-textarea{
+textarea {
   width: 100%;
   height: 10rem;
 }
@@ -237,7 +316,7 @@ textarea{
   padding: 3rem;
 }
 
-.scrollable{
+.scrollable {
   max-height: 40rem;
   overflow-y: auto;
 }

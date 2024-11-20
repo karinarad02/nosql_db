@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MovieList from "./components/MovieList";
 import MovieCreate from "./components/MovieCreate";
+import MovieView from "./components/MovieView";
 import MovieEdit from "./components/MovieEdit";
 import MovieStats from "./components/MovieStats";
 
@@ -38,7 +39,11 @@ function App() {
             path="/create"
             element={<MovieCreate fetchMovies={fetchMovies} />}
           />
-
+          {/* View Existing Movie */}
+          <Route
+            path="/view/:id"
+            element={<MovieView/>}
+          />
           {/* Edit Existing Movie */}
           <Route
             path="/edit/:id"
